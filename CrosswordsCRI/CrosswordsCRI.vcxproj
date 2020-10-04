@@ -142,6 +142,7 @@
     <ClCompile Include="CrosswordDeck.cpp" />
     <ClCompile Include="CrosswordDeckCell.cpp" />
     <ClCompile Include="CrosswordDeckFileReader.cpp" />
+    <ClCompile Include="CrosswordDictionary.cpp" />
     <ClCompile Include="CrosswordGap.cpp" />
     <ClCompile Include="CrosswordsCRI.cpp" />
   </ItemGroup>
@@ -149,6 +150,7 @@
     <ClInclude Include="CrosswordDeck.h" />
     <ClInclude Include="CrosswordDeckCell.h" />
     <ClInclude Include="CrosswordDeckFileReader.h" />
+    <ClInclude Include="CrosswordDictionary.h" />
     <ClInclude Include="CrosswordGap.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
