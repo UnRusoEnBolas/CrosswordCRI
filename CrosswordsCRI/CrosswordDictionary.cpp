@@ -85,3 +85,10 @@ void CrosswordDictionary::emplaceWordtoList(std::string& word)
 	m_llistes[word.length() - 1].push_back(word);
 
 }
+
+std::list<std::string>& CrosswordDictionary::getWords(int length)
+{
+	assert(length > 0);
+
+	return m_llistes[length - 1];
+}

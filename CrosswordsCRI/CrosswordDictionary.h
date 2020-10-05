@@ -22,6 +22,7 @@ public:
 	void setDictionary(std::string file_name);
     void printDictionary();
 	void emplaceWordtoList(std::string& word);
+	std::list<std::string>& getWords(int length);
 	
 private:
 	static const int MAX_LLISTES = 15;
