@@ -13,7 +13,18 @@ int main()
     cout << "Total gaps in this crossword: " << crosswordDeck.getGaps().size() << "\n";
 
     //Comprovar funcionament diccionari
+    cout << "PROVA printDictionary()" << endl;
     CrosswordDictionary cd;
     cd.setDictionary(".\\data\\diccionari_CB.txt");
     cd.printDictionary();
+
+    //Obtenir llista de paraules de longitud n
+
+    cout << "PROVA getWords()" << endl;
+    std::list<string> l = cd.getWords(5);
+    for (std::string& s : l)
+    {
+        cout << s << " ";
+    }
+    cout << endl;
 }
