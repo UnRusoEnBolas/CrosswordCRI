@@ -4,25 +4,24 @@
 CrosswordDeckCell::CrosswordDeckCell(pair<int, int> coordinates, bool isActive) {
 	this->coordinates = coordinates;
 	this->active = isActive;
-	if (isActive) this->letter = '-';
-	else this->letter = '#';
+	if (isActive) this->lettersStack.push('-');
+	else this->lettersStack.push('#');
 }
 
 void CrosswordDeckCell::setLetter(char letter) {
-	//La cell ha de ser activa y no ha de tenir cap lletra assignada.
+	//La cell ha de ser activa.
 	assert(this->active == true);
-	assert(this->set == false);
-
-	this->letter = letter;
-	this->set = true;
+	this->lettersStack.push(letter);
 }
 
 void CrosswordDeckCell::removeLetter() {
-	//La cell ha de ser activa y ha de tenir alguna lletra asignada.
+	//La cell ha de ser activa y la pila ha de tenir un tamany >= 2.
 	assert(this->active == true);
-	assert(this->set == false);
+	assert(this->lettersStack.size() >= 2);
+	this->lettersStack.pop();
+}
 
-	this->letter = '-';
-	this->set = false;
+char CrosswordDeckCell::getLetter() {
+	return this->lettersStack.top();
 }
 
