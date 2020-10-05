@@ -1,0 +1,5 @@
+﻿  CrosswordDeckCell.cpp
+  CrosswordsCRI.cpp
+C:\Users\JGimenez\Desktop\CrosswordsCRI\CrosswordsCRI\CrosswordGap.h(16,16): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
+  Generando código...
+  CrosswordsCRI.vcxproj -> C:\Users\JGimenez\Desktop\CrosswordsCRI\x64\Debug\CrosswordsCRI.exe
