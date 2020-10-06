@@ -42,7 +42,7 @@ void CrosswordDictionary::setDictionary(std::string file_name)
 			file.close();
 		}
 
-		for (size_t i = 0; i < MAX_LLISTES; ++i)
+		for (size_t i = 1; i < MAX_LLISTES; ++i)
 		{
 			m_dictionary.emplace(i + 1, m_llistes[i]);
 		}
