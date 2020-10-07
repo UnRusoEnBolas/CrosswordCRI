@@ -2,6 +2,7 @@
 #include <list>
 #include <vector>
 #include <iostream>
+#pragma once
 
 
 /**
@@ -14,18 +15,17 @@
 */
 
 
-class CrosswordDictionary
-{
+class CrosswordDictionary {
 public:
-	CrosswordDictionary() { m_llistes.resize(MAX_LLISTES); }
+	CrosswordDictionary(std::string filenamePath);
 	~CrosswordDictionary();
 	void setDictionary(std::string file_name);
     void printDictionary();
 	void emplaceWordtoList(std::string& word);
-	std::list<std::string>& getWords(int length);
+	std::vector<std::string>& getWords(int length);
 	
 private:
-	static const int MAX_LLISTES = 15;
-	std::unordered_map<int, std::list<std::string>> m_dictionary;
-	std::vector<std::list<std::string>> m_llistes; //tamany maxim 15
+	static const int MAX_LLISTES = 30;
+	std::unordered_map<int, std::vector<std::string>> m_dictionary;
+	std::vector<std::vector<std::string>> m_llistes; //tamany maxim 15
 };

@@ -12,6 +12,7 @@ CrosswordDeck::CrosswordDeck(int rows, int cols, list<char> charsList) {
 	for (list<char>::iterator it = charsList.begin(); it != charsList.end(); it++) {
 		if (*it == '#') this->deck[i / rows].push_back(new CrosswordDeckCell(pair<int, int>(i / rows, i % cols), false));
 		else if (*it == '0') this->deck[i / rows].push_back(new CrosswordDeckCell(pair<int, int>(i / rows, i % cols), true));
+		else this->deck[i / rows].push_back(new CrosswordDeckCell(pair<int, int>(i / rows, i % cols), true));
 		i++;
 	}
 
@@ -71,17 +72,17 @@ void CrosswordDeck::printDeck() {
 	}
 }
 
-list<CrosswordGap*> CrosswordDeck::getHorizontalGaps() {
-	list<CrosswordGap*> horizontalGaps;
-	for (list<CrosswordGap*>::iterator it = this->gaps.begin(); it != this->gaps.end(); it++) {
+vector<CrosswordGap*> CrosswordDeck::getHorizontalGaps() {
+	vector<CrosswordGap*> horizontalGaps;
+	for (vector<CrosswordGap*>::iterator it = this->gaps.begin(); it != this->gaps.end(); it++) {
 		if ((*it)->getDirection() == Direction::horizontal) horizontalGaps.push_back(*it);
 	}
 	return horizontalGaps;
 }
 
-list<CrosswordGap*> CrosswordDeck::getVerticalGaps() {
-	list<CrosswordGap*> verticalGaps;
-	for (list<CrosswordGap*>::iterator it = this->gaps.begin(); it != this->gaps.end(); it++) {
+vector<CrosswordGap*> CrosswordDeck::getVerticalGaps() {
+	vector<CrosswordGap*> verticalGaps;
+	for (vector<CrosswordGap*>::iterator it = this->gaps.begin(); it != this->gaps.end(); it++) {
 		if ((*it)->getDirection() == Direction::vertical) verticalGaps.push_back(*it);
 	}
 	return verticalGaps;

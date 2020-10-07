@@ -145,6 +145,7 @@
     <ClCompile Include="CrosswordDictionary.cpp" />
     <ClCompile Include="CrosswordGap.cpp" />
     <ClCompile Include="CrosswordsCRI.cpp" />
+    <ClCompile Include="CrosswordSolver.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CrosswordDeck.h" />
@@ -152,6 +153,7 @@
     <ClInclude Include="CrosswordDeckFileReader.h" />
     <ClInclude Include="CrosswordDictionary.h" />
     <ClInclude Include="CrosswordGap.h" />
+    <ClInclude Include="CrosswordSolver.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
