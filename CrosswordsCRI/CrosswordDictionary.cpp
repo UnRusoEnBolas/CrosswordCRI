@@ -6,6 +6,11 @@
 #include <exception>
 
 
+CrosswordDictionary::CrosswordDictionary(std::string filenamePath) {
+	m_llistes.resize(MAX_LLISTES);
+	this->setDictionary(filenamePath);
+}
+
 CrosswordDictionary::~CrosswordDictionary()
 {
 	m_dictionary.clear();
@@ -42,7 +47,7 @@ void CrosswordDictionary::setDictionary(std::string file_name)
 			file.close();
 		}
 
-		for (size_t i = 0; i < MAX_LLISTES; ++i)
+		for (size_t i = 1; i < MAX_LLISTES; ++i)
 		{
 			m_dictionary.emplace(i + 1, m_llistes[i]);
 		}
@@ -86,7 +91,7 @@ void CrosswordDictionary::emplaceWordtoList(std::string& word)
 
 }
 
-std::list<std::string>& CrosswordDictionary::getWords(int length)
+std::vector<std::string>& CrosswordDictionary::getWords(int length)
 {
 	assert(length > 0);
 

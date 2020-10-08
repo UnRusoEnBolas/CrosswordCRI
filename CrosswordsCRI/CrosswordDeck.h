@@ -9,15 +9,15 @@ class CrosswordDeck
 {
 	private:
 		vector<vector<CrosswordDeckCell*>> deck;
-		list<CrosswordGap*> gaps;
+		vector<CrosswordGap*> gaps;
 		int rows;
 		int cols;
 	public:
 		CrosswordDeck(int rows, int cols, list<char> charsList);
 		~CrosswordDeck();
-		list<CrosswordGap*> getGaps() { return this->gaps; }
-		list<CrosswordGap*> getHorizontalGaps();
-		list<CrosswordGap*> getVerticalGaps();
+		vector<CrosswordGap*> getGaps() { return this->gaps; }
+		vector<CrosswordGap*> getHorizontalGaps();
+		vector<CrosswordGap*> getVerticalGaps();
 		void printDeck();
 };
 
