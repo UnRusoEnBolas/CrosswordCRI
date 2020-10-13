@@ -1,3 +1,11 @@
-﻿  CrosswordsCRI.cpp
-C:\Users\JGimenez\Desktop\CrosswordsCRI\CrosswordsCRI\CrosswordGap.h(15,16): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
+﻿  CrosswordDeck.cpp
+C:\Users\JGimenez\Desktop\CrosswordsCRI\CrosswordsCRI\CrosswordGap.h(17,16): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
+  CrosswordGap.cpp
+C:\Users\JGimenez\Desktop\CrosswordsCRI\CrosswordsCRI\CrosswordGap.h(17,16): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
+  CrosswordSolver.cpp
+C:\Users\JGimenez\Desktop\CrosswordsCRI\CrosswordsCRI\CrosswordGap.h(17,16): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\JGimenez\Desktop\CrosswordsCRI\CrosswordsCRI\CrosswordSolver.cpp(6,42): warning C4267: '=': conversión de 'size_t' a 'int'; posible pérdida de datos
+  CrosswordsCRI.cpp
+C:\Users\JGimenez\Desktop\CrosswordsCRI\CrosswordsCRI\CrosswordGap.h(17,16): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
+  Generando código...
   CrosswordsCRI.vcxproj -> C:\Users\JGimenez\Desktop\CrosswordsCRI\x64\Debug\CrosswordsCRI.exe
