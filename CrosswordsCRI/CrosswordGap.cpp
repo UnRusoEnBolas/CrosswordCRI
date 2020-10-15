@@ -50,10 +50,13 @@ vector<string> CrosswordGap::getAvailableDomain() {
 	return availableWords;
 }
 
-void CrosswordGap::setFalse(string& s)
+void CrosswordGap::setGapWordFalse(string& s)
 {
 	assert(!domain.empty());
 	assert(s != "");
+	assert(s.length() == this->getSize());
+	assert(s.length() > 0);
+
 	list<pair<string, bool>>::iterator it = find(this->domain.begin(), this->domain.end(), make_pair(s,true));
 	it->second == false;
 }
@@ -61,7 +64,9 @@ void CrosswordGap::setFalse(string& s)
 bool CrosswordGap::isGapAvailable()
 {
 	assert(!domain.empty());
+
 	int word_count = 0;
+
 	for (pair<string,bool> p : this->domain)
 	{
 		if (p.second == false)
@@ -69,7 +74,6 @@ bool CrosswordGap::isGapAvailable()
 			word_count++;
 		}
 	}
-
 	if (word_count == domain.size())
 	{
 		return false;
