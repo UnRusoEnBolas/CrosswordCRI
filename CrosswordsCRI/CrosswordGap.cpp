@@ -1,4 +1,5 @@
 #include "CrosswordGap.h"
+#include <assert.h>
 
 CrosswordGap::CrosswordGap(list<CrosswordDeckCell*> cells, Direction direction, vector<string> domainWords) {
 	this->cells = cells;
@@ -47,4 +48,34 @@ vector<string> CrosswordGap::getAvailableDomain() {
 		if ((*it).second == true) availableWords.push_back((*it).first);
 	}
 	return availableWords;
+}
+
+void CrosswordGap::setFalse(string& s)
+{
+	assert(!domain.empty());
+	assert(s != "");
+	list<pair<string, bool>>::iterator it = find(this->domain.begin(), this->domain.end(), make_pair(s,true));
+	it->second == false;
+}
+
+bool CrosswordGap::isGapAvailable()
+{
+	assert(!domain.empty());
+	int word_count = 0;
+	for (pair<string,bool> p : this->domain)
+	{
+		if (p.second == false)
+		{
+			word_count++;
+		}
+	}
+
+	if (word_count == domain.size())
+	{
+		return false;
+	}
+	else
+	{
+		return true;
+	}
 }

@@ -21,4 +21,6 @@ public:
 	bool setWord(string word);
 	string getWord();
 	void removeWord();
+	void setFalse(string& s);
+	bool isGapAvailable();
 };
