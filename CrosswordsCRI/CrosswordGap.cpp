@@ -1,8 +1,12 @@
 #include "CrosswordGap.h"
 
-CrosswordGap::CrosswordGap(list<CrosswordDeckCell*> cells, Direction direction) {
+CrosswordGap::CrosswordGap(list<CrosswordDeckCell*> cells, Direction direction, vector<string> domainWords) {
 	this->cells = cells;
 	this->direction = direction;
+
+	for (vector<string>::iterator it = domainWords.begin(); it != domainWords.end(); it++) {
+		this->domain.push_back(pair<string, bool>(*it, true));
+	}
 }
 
 bool CrosswordGap::setWord(string word) {
@@ -35,4 +39,12 @@ void CrosswordGap::removeWord() {
 	for (list<CrosswordDeckCell*>::iterator it = this->cells.begin(); it != this->cells.end(); it++) {
 		(*it)->removeLetter();
 	}
+}
+
+vector<string> CrosswordGap::getAvailableDomain() {
+	vector<string> availableWords;
+	for (list<pair<string, bool>>::iterator it = this->domain.begin(); it != this->domain.end(); it++) {
+		if ((*it).second == true) availableWords.push_back((*it).first);
+	}
+	return availableWords;
 }

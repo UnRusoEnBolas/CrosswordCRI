@@ -1,7 +1,7 @@
 #include "CrosswordDeck.h"
 #include <iostream>
 
-CrosswordDeck::CrosswordDeck(int rows, int cols, list<char> charsList) {
+CrosswordDeck::CrosswordDeck(int rows, int cols, list<char> charsList, CrosswordDictionary* dictionary) {
 	this->rows = rows;
 	this->cols = cols;
 
@@ -27,12 +27,12 @@ CrosswordDeck::CrosswordDeck(int rows, int cols, list<char> charsList) {
 				gap.push_back(deck[x][y]);
 			}
 			else {
-				if (count > 1) this->gaps.push_back(new CrosswordGap(gap, Direction::horizontal));
+				if (count > 1) this->gaps.push_back(new CrosswordGap(gap, Direction::horizontal, dictionary->getWords(count)));
 				count = 0;
 				gap.clear();
 			}
 		}
-		if (count > 1) this->gaps.push_back(new CrosswordGap(gap, Direction::horizontal));
+		if (count > 1) this->gaps.push_back(new CrosswordGap(gap, Direction::horizontal, dictionary->getWords(count)));
 	}
 
 	//Fem el mateix però per als gaps verticals.
@@ -46,12 +46,12 @@ CrosswordDeck::CrosswordDeck(int rows, int cols, list<char> charsList) {
 				gap.push_back(deck[y][x]);
 			}
 			else {
-				if (count > 1) this->gaps.push_back(new CrosswordGap(gap, Direction::vertical));
+				if (count > 1) this->gaps.push_back(new CrosswordGap(gap, Direction::vertical, dictionary->getWords(count)));
 				count = 0;
 				gap.clear();
 			}
 		}
-		if (count > 1) this->gaps.push_back(new CrosswordGap(gap, Direction::vertical));
+		if (count > 1) this->gaps.push_back(new CrosswordGap(gap, Direction::vertical, dictionary->getWords(count)));
 	}
 }
 
