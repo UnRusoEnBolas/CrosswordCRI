@@ -58,7 +58,7 @@ void CrosswordGap::setGapWordFalse(string& s)
 	assert(s.length() > 0);
 
 	list<pair<string, bool>>::iterator it = find(this->domain.begin(), this->domain.end(), make_pair(s,true));
-	it->second == false;
+	it->second = false;
 }
 
 bool CrosswordGap::isGapAvailable()
