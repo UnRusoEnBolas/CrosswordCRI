@@ -23,4 +23,5 @@ public:
 	string getWord();
 	void removeWord();
 	void addCrossedGaps(pair<CrosswordGap, int> crossedGap) { crossedGaps.push_back(crossedGap); }
+	list<pair<CrosswordGap, int>> getCrossedGaps() { return this->crossedGaps; }
 };

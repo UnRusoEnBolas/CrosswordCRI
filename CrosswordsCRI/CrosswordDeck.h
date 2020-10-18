@@ -22,6 +22,7 @@ class CrosswordDeck
 		void printDeck();
 
 		void crossedGaps();
+		void updateDomain(list<pair<CrosswordGap, int>> pair);
 
 };
 

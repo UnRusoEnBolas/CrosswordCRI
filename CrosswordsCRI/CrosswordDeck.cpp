@@ -118,3 +118,31 @@ void CrosswordDeck::crossedGaps() {
 	}
 }
 
+
+
+// PARA ESTE METODO NO SE ME OCURRE UNA MANERA QUE NO SEA QUE VAYA A BUSCAR LOS CROSSED GAPS DEL CROSSED GAP QUE SE PASA POR PARAMETRO, 
+// NO SE HASTA QUE PUNTO ES MEJOR PASAR UN GAP Y COMPROBARLO CON SUS CROSSED GAPS
+/*
+	void CrosswordDeck::updateDomain(CrosswordGap gap)
+	{
+		mirar sus crossed gaps y ver que letra hay en la cell que tienen en comun para quitar del dominio las palabras que no encajen
+	}
+*/
+
+
+void CrosswordDeck::updateDomain(list<pair<CrosswordGap, int>> cross) {
+	
+	for (list<pair<CrosswordGap, int>>::iterator it = cross.begin(); it != cross.end(); it++) {
+		CrosswordGap crossedGap = (*it).first;
+
+		if (crossedGap.getWord() != " ") {
+			list<pair<CrosswordGap, int>> crossList = crossedGap.getCrossedGaps();
+
+			string crossedWord = crossedGap.getWord();
+
+			int index = (*it).second;
+
+		}
+	}
+}
+

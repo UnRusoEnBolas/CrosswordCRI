@@ -21,4 +21,10 @@ C:\Users\thela\Documents\UAB\PROYECTO CRI\CrosswordCRI\CrosswordsCRI\CrosswordDe
               _Other1=CrosswordGap &,
               _Other2=__int64
           ]
+  CrosswordsCRI.cpp
+C:\Users\thela\Documents\UAB\PROYECTO CRI\CrosswordCRI\CrosswordsCRI\CrosswordGap.h(18,16): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+  CrosswordSolver.cpp
+C:\Users\thela\Documents\UAB\PROYECTO CRI\CrosswordCRI\CrosswordsCRI\CrosswordGap.h(18,16): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\thela\Documents\UAB\PROYECTO CRI\CrosswordCRI\CrosswordsCRI\CrosswordSolver.cpp(6,42): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+  Generating Code...
   CrosswordsCRI.vcxproj -> C:\Users\thela\Documents\UAB\PROYECTO CRI\CrosswordCRI\x64\Debug\CrosswordsCRI.exe
