@@ -74,7 +74,7 @@ void CrosswordDeck::printDeck() {
 
 vector<CrosswordGap*> CrosswordDeck::getHorizontalGaps() {
 	vector<CrosswordGap*> horizontalGaps;
-	for (vector<CrosswordGap*>::iterator it = this->gaps.begin(); it != this->gaps.end(); it++) {
+ 	for (vector<CrosswordGap*>::iterator it = this->gaps.begin(); it != this->gaps.end(); it++) {
 		if ((*it)->getDirection() == Direction::horizontal) horizontalGaps.push_back(*it);
 	}
 	return horizontalGaps;
@@ -87,4 +87,68 @@ vector<CrosswordGap*> CrosswordDeck::getVerticalGaps() {
 	}
 	return verticalGaps;
 }
+
+
+void CrosswordDeck::crossedGaps() {
+	vector<CrosswordGap*> horizontalGaps = this->getHorizontalGaps();
+	vector<CrosswordGap*> verticalGaps = this->getVerticalGaps();
+	for (vector<CrosswordGap*>::iterator it = horizontalGaps.begin(); it != horizontalGaps.end(); it++) {
+		for (vector<CrosswordGap*>::iterator it2 = verticalGaps.begin(); it2 != verticalGaps.end(); it2++) {
+			
+			list<CrosswordDeckCell*> horCells = (*it)->getCells();
+			list<CrosswordDeckCell*> verCells = (*it2)->getCells();
+
+			list<CrosswordDeckCell*>::iterator itHorCells;
+			list<CrosswordDeckCell*>::iterator itVerCells;
+
+			for (itHorCells = horCells.begin(); itHorCells != horCells.end(); itHorCells++) {
+				for (itVerCells = verCells.begin(); itVerCells != verCells.end(); itVerCells++) {
+					if ((*itVerCells)->getCoords() == (*itHorCells)->getCoords()) {
+						
+						pair<CrosswordGap, int> pair1((**it2), distance(horCells.begin(), itHorCells));
+						(*it)->addCrossedGaps(pair1);
+
+						pair<CrosswordGap, int> pair2((**it), distance(verCells.begin(), itVerCells));
+						(*it2)->addCrossedGaps(pair2);
+						//(*it)->addCrossedGaps(pair<CrosswordGap, int> pair1(it2, distance(horCells.begin(), itHorCells)));
+					}
+
+				}
+			}
+			
+
+			/*pair<int, int> horCoords = (*itHorCells)->getCoords();
+
+			for (itVerCells = verCells.begin(); itVerCells != verCells.end(); itVerCells++) {
+				pair<int, int> verCoords = (*itVerCells)->getCoords();
+			}*/
+
+
+			//list<CrosswordDeckCell*>::iterator itCell;
+
+			/*for (itCell = horCells.begin(); itCell != horCells.end(); itCell++) {
+
+				pair<int, int> coords = (*itCell)->getCoords();
+		
+			}*/
+
+
+			
+		}
+		
+	}
+}
+
+
+/*void CrosswordGap::getCrossedGaps() {
+
+	if (this->direction == Direction::horizontal) {
+		for (list<CrosswordDeckCell*>::iterator it = this->cells.begin(); it != this->cells.end(); it++) {
+			for (list<CrosswordDeckCell*>::iterator it2 = )
+		}
+	}
+
+
+
+}*/
 

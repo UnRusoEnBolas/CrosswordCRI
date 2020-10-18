@@ -20,5 +20,8 @@ class CrosswordDeck
 		vector<CrosswordGap*> getHorizontalGaps();
 		vector<CrosswordGap*> getVerticalGaps();
 		void printDeck();
+
+		void crossedGaps();
+
 };
 

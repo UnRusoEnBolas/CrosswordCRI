@@ -1,4 +1,7 @@
 #include "CrosswordGap.h"
+#include <iostream>
+
+using namespace std;
 
 CrosswordGap::CrosswordGap(list<CrosswordDeckCell*> cells, Direction direction, vector<string> domainWords) {
 	this->cells = cells;
@@ -48,3 +51,4 @@ vector<string> CrosswordGap::getAvailableDomain() {
 	}
 	return availableWords;
 }
+
