@@ -1,4 +1,0 @@
-﻿  CrosswordSolver.cpp
-C:\Users\JGimenez\Desktop\CrosswordCRI\CrosswordsCRI\CrosswordGap.h(18,16): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
-C:\Users\JGimenez\Desktop\CrosswordCRI\CrosswordsCRI\CrosswordSolver.cpp(6,42): warning C4267: '=': conversión de 'size_t' a 'int'; posible pérdida de datos
-  CrosswordsCRI.vcxproj -> C:\Users\JGimenez\Desktop\CrosswordCRI\x64\Debug\CrosswordsCRI.exe

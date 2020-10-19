@@ -21,14 +21,11 @@ bool CrosswordSolver::solveCrossword_Backtracking() {
 }
 
 bool CrosswordSolver::remainingGapsStillHaveDomain() {
-	int idx = 0;
 	vector<CrosswordGap*> gaps = this->deck->getGaps();
-	for (vector<CrosswordGap*>::iterator it = gaps.begin(); it != gaps.end(); it++) {
+	for (vector<CrosswordGap*>::iterator it = gaps.begin()+this->filledGaps; it != gaps.end(); it++) {
 		if ((*it)->getAvailableDomain().size() == 0) {
-			cout << "Gap: " << idx << " without domain" << endl;
 			return false;
 		}
-		idx++;
 	}
 	return true;
 }
@@ -36,8 +33,8 @@ bool CrosswordSolver::remainingGapsStillHaveDomain() {
 bool CrosswordSolver::solveCrossword_Backtracking_WithForwardChecking() {
 	if (this->filledGaps == this->totalGaps) return true;
 	vector<string> possibleWords = this->deck->getGaps()[this->filledGaps]->getAvailableDomain();
-
-	if (/*(this->filledGaps < this->totalGaps) &&*/ this->remainingGapsStillHaveDomain()) {
+	
+	if (this->remainingGapsStillHaveDomain()) {
 		for (int idx = 0; idx < possibleWords.size(); idx++) {
 			if (this->deck->getGaps()[this->filledGaps]->setWord(possibleWords[idx])) {
 				this->deck->updateDomains(this->deck->getGaps()[this->filledGaps]);
@@ -46,6 +43,7 @@ bool CrosswordSolver::solveCrossword_Backtracking_WithForwardChecking() {
 			}
 		}
 	}
+
 	this->filledGaps--;
 	this->deck->getGaps()[this->filledGaps]->removeWord();
 	this->deck->restoreDomains(this->deck->getGaps()[this->filledGaps]);

@@ -127,7 +127,7 @@ void CrosswordDeck::updateDomains(CrosswordGap* gap) {
 	for (list<pair<CrosswordGap*, int>>::iterator it = gap->getCrossedGaps()->begin(); it != gap->getCrossedGaps()->end(); it++) {
 		int secondGapPosition = 0;
 		for (list<pair<CrosswordGap*, int>>::iterator it2 = it->first->getCrossedGaps()->begin(); it2 != it->first->getCrossedGaps()->end(); it2++) {
-			if (it2->first == it->first) secondGapPosition = it2->second;
+			if (it2->first == gap) secondGapPosition = it2->second;
 		}
 		char letter = word[it->second];
 		it->first->updateDomain(letter, secondGapPosition, gap);
@@ -147,8 +147,8 @@ void CrosswordDeck::restoreDomains(CrosswordGap* gap) {
 }
 
 
-bool myfunction(CrosswordGap* i, CrosswordGap* j) { return (i->getCrossedGaps() < j->getCrossedGaps()); }
+bool orderGaps(CrosswordGap* i, CrosswordGap* j) { return (i->getCrossedGaps() < j->getCrossedGaps()); }
 
 void CrosswordDeck::orderGapsByCrossingGaps() {
-	std::sort(this->gaps.begin(), this->gaps.end(), myfunction);
+	std::sort(this->gaps.begin(), this->gaps.end(), orderGaps);
 }
