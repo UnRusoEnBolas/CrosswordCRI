@@ -53,6 +53,8 @@ CrosswordDeck::CrosswordDeck(int rows, int cols, list<char> charsList, Crossword
 		}
 		if (count > 1) this->gaps.push_back(new CrosswordGap(gap, Direction::vertical, dictionary->getWords(count)));
 	}
+
+	this->setCrossedGaps();
 }
 
 CrosswordDeck::~CrosswordDeck() {
@@ -89,7 +91,7 @@ vector<CrosswordGap*> CrosswordDeck::getVerticalGaps() {
 }
 
 
-void CrosswordDeck::crossedGaps() {
+void CrosswordDeck::setCrossedGaps() {
 	vector<CrosswordGap*> horizontalGaps = this->getHorizontalGaps();
 	vector<CrosswordGap*> verticalGaps = this->getVerticalGaps();
 	for (vector<CrosswordGap*>::iterator it = horizontalGaps.begin(); it != horizontalGaps.end(); it++) {
@@ -105,10 +107,10 @@ void CrosswordDeck::crossedGaps() {
 				for (itVerCells = verCells.begin(); itVerCells != verCells.end(); itVerCells++) {
 					if ((*itVerCells)->getCoords() == (*itHorCells)->getCoords()) {
 
-						pair<CrosswordGap, int> pair1((**it2), distance(horCells.begin(), itHorCells));
+						pair<CrosswordGap*, int> pair1((*it2), distance(horCells.begin(), itHorCells));
 						(*it)->addCrossedGaps(pair1);
 
-						pair<CrosswordGap, int> pair2((**it), distance(verCells.begin(), itVerCells));
+						pair<CrosswordGap*, int> pair2((*it), distance(verCells.begin(), itVerCells));
 						(*it2)->addCrossedGaps(pair2);
 					}
 
@@ -119,18 +121,21 @@ void CrosswordDeck::crossedGaps() {
 }
 
 
-
-// PARA ESTE METODO NO SE ME OCURRE UNA MANERA QUE NO SEA QUE VAYA A BUSCAR LOS CROSSED GAPS DEL CROSSED GAP QUE SE PASA POR PARAMETRO, 
-// NO SE HASTA QUE PUNTO ES MEJOR PASAR UN GAP Y COMPROBARLO CON SUS CROSSED GAPS
-/*
-	void CrosswordDeck::updateDomain(CrosswordGap gap)
-	{
-		mirar sus crossed gaps y ver que letra hay en la cell que tienen en comun para quitar del dominio las palabras que no encajen
+void CrosswordDeck::updateDomains(CrosswordGap* gap) {
+	string word = gap->getWord();
+	cout << "Size of crossed Gaps: " << gap->getCrossedGaps()->size() << endl;
+	for (list<pair<CrosswordGap*, int>>::iterator it = gap->getCrossedGaps()->begin(); it != gap->getCrossedGaps()->end(); it++) {
+		int secondGapPosition = 0;
+		for (list<pair<CrosswordGap*, int>>::iterator it2 = it->first->getCrossedGaps()->begin(); it2 != it->first->getCrossedGaps()->end(); it2++) {
+			if (it2->first == it->first) secondGapPosition = it2->second;
+		}
+		char letter = word[it->second];
+		it->first->updateDomain(letter, secondGapPosition);
 	}
-*/
+}
 
 
-void CrosswordDeck::updateDomain(list<pair<CrosswordGap, int>> cross) {
+/*void CrosswordDeck::updateDomain(list<pair<CrosswordGap, int>> cross) {
 	
 	for (list<pair<CrosswordGap, int>>::iterator it = cross.begin(); it != cross.end(); it++) {
 		CrosswordGap crossedGap = (*it).first;
@@ -144,5 +149,5 @@ void CrosswordDeck::updateDomain(list<pair<CrosswordGap, int>> cross) {
 
 		}
 	}
-}
+}*/
 

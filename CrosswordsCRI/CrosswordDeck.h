@@ -13,16 +13,15 @@ class CrosswordDeck
 		vector<CrosswordGap*> gaps;
 		int rows;
 		int cols;
+		void setCrossedGaps();
+		vector<CrosswordGap*> getHorizontalGaps();
+		vector<CrosswordGap*> getVerticalGaps();
 	public:
 		CrosswordDeck(int rows, int cols, list<char> charsList, CrosswordDictionary* dictionary);
 		~CrosswordDeck();
 		vector<CrosswordGap*> getGaps() { return this->gaps; }
-		vector<CrosswordGap*> getHorizontalGaps();
-		vector<CrosswordGap*> getVerticalGaps();
 		void printDeck();
-
-		void crossedGaps();
-		void updateDomain(list<pair<CrosswordGap, int>> pair);
-
+		//void updateDomain(list<pair<CrosswordGap, int>> pair);
+		void updateDomains(CrosswordGap* gap);
 };
 

@@ -52,3 +52,8 @@ vector<string> CrosswordGap::getAvailableDomain() {
 	return availableWords;
 }
 
+void CrosswordGap::updateDomain(char letter, int position) {
+	for (list<pair<string, bool>>::iterator it = this->domain.begin(); it != domain.end(); it++) {
+		if (it->first[position] != letter) it->second = false;
+	}
+}

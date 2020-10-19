@@ -1,6 +1,6 @@
 ﻿  CrosswordDeck.cpp
-C:\Users\thela\Documents\UAB\PROYECTO CRI\CrosswordCRI\CrosswordsCRI\CrosswordGap.h(18,16): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.27.29110\include\utility(192,1): warning C4244: 'initializing': conversion from '_Ty' to '_Ty2', possible loss of data
+C:\Users\JGimenez\Desktop\CrosswordCRI\CrosswordsCRI\CrosswordGap.h(18,16): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include\utility(192,1): warning C4244: 'inicializando': conversión de '_Ty' a '_Ty2'; posible pérdida de datos
           with
           [
               _Ty=__int64
@@ -9,22 +9,16 @@ C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.
           [
               _Ty2=int
           ]
-C:\Users\thela\Documents\UAB\PROYECTO CRI\CrosswordCRI\CrosswordsCRI\CrosswordDeck.cpp(108): message : see reference to function template instantiation 'std::pair<CrosswordGap,int>::pair<CrosswordGap&,__int64,0>(_Other1,_Other2 &&) noexcept(false)' being compiled
+C:\Users\JGimenez\Desktop\CrosswordCRI\CrosswordsCRI\CrosswordDeck.cpp(110): message : Vea la referencia a la creación de una instancia de la función plantilla "std::pair<CrosswordGap *,int>::pair<CrosswordGap*&,__int64,0>(_Other1,_Other2 &&) noexcept" que se está compilando
           with
           [
-              _Other1=CrosswordGap &,
+              _Other1=CrosswordGap *&,
               _Other2=__int64
           ]
-C:\Users\thela\Documents\UAB\PROYECTO CRI\CrosswordCRI\CrosswordsCRI\CrosswordDeck.cpp(108): message : see reference to function template instantiation 'std::pair<CrosswordGap,int>::pair<CrosswordGap&,__int64,0>(_Other1,_Other2 &&) noexcept(false)' being compiled
+C:\Users\JGimenez\Desktop\CrosswordCRI\CrosswordsCRI\CrosswordDeck.cpp(110): message : Vea la referencia a la creación de una instancia de la función plantilla "std::pair<CrosswordGap *,int>::pair<CrosswordGap*&,__int64,0>(_Other1,_Other2 &&) noexcept" que se está compilando
           with
           [
-              _Other1=CrosswordGap &,
+              _Other1=CrosswordGap *&,
               _Other2=__int64
           ]
-  CrosswordsCRI.cpp
-C:\Users\thela\Documents\UAB\PROYECTO CRI\CrosswordCRI\CrosswordsCRI\CrosswordGap.h(18,16): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
-  CrosswordSolver.cpp
-C:\Users\thela\Documents\UAB\PROYECTO CRI\CrosswordCRI\CrosswordsCRI\CrosswordGap.h(18,16): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\thela\Documents\UAB\PROYECTO CRI\CrosswordCRI\CrosswordsCRI\CrosswordSolver.cpp(6,42): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-  Generating Code...
-  CrosswordsCRI.vcxproj -> C:\Users\thela\Documents\UAB\PROYECTO CRI\CrosswordCRI\x64\Debug\CrosswordsCRI.exe
+  CrosswordsCRI.vcxproj -> C:\Users\JGimenez\Desktop\CrosswordCRI\x64\Debug\CrosswordsCRI.exe

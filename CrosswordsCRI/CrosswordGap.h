@@ -12,7 +12,7 @@ private:
 	list<CrosswordDeckCell*> cells;
 	list<pair<string, bool>> domain;
 	Direction direction;
-	list<pair<CrosswordGap, int>> crossedGaps;
+	list<pair<CrosswordGap*, int>> crossedGaps;
 public:
 	CrosswordGap(list<CrosswordDeckCell*> cells, Direction direction, vector<string> domainWords);
 	int getSize() { return this->cells.size(); }
@@ -22,6 +22,7 @@ public:
 	bool setWord(string word);
 	string getWord();
 	void removeWord();
-	void addCrossedGaps(pair<CrosswordGap, int> crossedGap) { crossedGaps.push_back(crossedGap); }
-	list<pair<CrosswordGap, int>> getCrossedGaps() { return this->crossedGaps; }
+	void addCrossedGaps(pair<CrosswordGap*, int> crossedGap) { crossedGaps.push_back(crossedGap); }
+	list<pair<CrosswordGap*, int>>* getCrossedGaps() { return &(this->crossedGaps); }
+	void updateDomain(char letter, int position);
 };

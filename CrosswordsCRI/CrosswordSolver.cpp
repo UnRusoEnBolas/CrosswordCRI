@@ -35,3 +35,19 @@ bool CrosswordSolver::solveCrossword_Backtracking() {
 	this->deck->getGaps()[this->filledGaps]->removeWord();
 	return false;
 }
+
+bool CrosswordSolver::solveCrossword_Backtracking_WithForwardCheking() {
+	if (this->filledGaps == this->totalGaps) return true;
+	vector<string> possibleWords = this->deck->getGaps()[this->filledGaps]->getAvailableDomain();
+	for (int idx = 0; idx < possibleWords.size(); idx++) {
+		if (this->deck->getGaps()[this->filledGaps]->setWord(possibleWords[idx])) {
+			cout << "Added word: " << possibleWords[idx] << endl;
+			this->deck->updateDomains(this->deck->getGaps()[this->filledGaps]);
+			this->filledGaps++;
+			if (this->solveCrossword_Backtracking()) return true;
+		}
+	}
+	this->filledGaps--;
+	this->deck->getGaps()[this->filledGaps]->removeWord();
+	return false;
+}
