@@ -21,7 +21,8 @@ class CrosswordDeck
 		~CrosswordDeck();
 		vector<CrosswordGap*> getGaps() { return this->gaps; }
 		void printDeck();
-		//void updateDomain(list<pair<CrosswordGap, int>> pair);
 		void updateDomains(CrosswordGap* gap);
+		void restoreDomains(CrosswordGap* gap);
+		void orderGapsByCrossingGaps();
 };
 

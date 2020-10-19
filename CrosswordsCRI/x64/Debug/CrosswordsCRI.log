@@ -1,24 +1,4 @@
-﻿  CrosswordDeck.cpp
+﻿  CrosswordSolver.cpp
 C:\Users\JGimenez\Desktop\CrosswordCRI\CrosswordsCRI\CrosswordGap.h(18,16): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include\utility(192,1): warning C4244: 'inicializando': conversión de '_Ty' a '_Ty2'; posible pérdida de datos
-          with
-          [
-              _Ty=__int64
-          ]
-          and
-          [
-              _Ty2=int
-          ]
-C:\Users\JGimenez\Desktop\CrosswordCRI\CrosswordsCRI\CrosswordDeck.cpp(110): message : Vea la referencia a la creación de una instancia de la función plantilla "std::pair<CrosswordGap *,int>::pair<CrosswordGap*&,__int64,0>(_Other1,_Other2 &&) noexcept" que se está compilando
-          with
-          [
-              _Other1=CrosswordGap *&,
-              _Other2=__int64
-          ]
-C:\Users\JGimenez\Desktop\CrosswordCRI\CrosswordsCRI\CrosswordDeck.cpp(110): message : Vea la referencia a la creación de una instancia de la función plantilla "std::pair<CrosswordGap *,int>::pair<CrosswordGap*&,__int64,0>(_Other1,_Other2 &&) noexcept" que se está compilando
-          with
-          [
-              _Other1=CrosswordGap *&,
-              _Other2=__int64
-          ]
+C:\Users\JGimenez\Desktop\CrosswordCRI\CrosswordsCRI\CrosswordSolver.cpp(6,42): warning C4267: '=': conversión de 'size_t' a 'int'; posible pérdida de datos
   CrosswordsCRI.vcxproj -> C:\Users\JGimenez\Desktop\CrosswordCRI\x64\Debug\CrosswordsCRI.exe

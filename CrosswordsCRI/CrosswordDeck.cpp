@@ -1,5 +1,6 @@
 #include "CrosswordDeck.h"
 #include <iostream>
+#include <algorithm>
 
 CrosswordDeck::CrosswordDeck(int rows, int cols, list<char> charsList, CrosswordDictionary* dictionary) {
 	this->rows = rows;
@@ -123,31 +124,31 @@ void CrosswordDeck::setCrossedGaps() {
 
 void CrosswordDeck::updateDomains(CrosswordGap* gap) {
 	string word = gap->getWord();
-	cout << "Size of crossed Gaps: " << gap->getCrossedGaps()->size() << endl;
 	for (list<pair<CrosswordGap*, int>>::iterator it = gap->getCrossedGaps()->begin(); it != gap->getCrossedGaps()->end(); it++) {
 		int secondGapPosition = 0;
 		for (list<pair<CrosswordGap*, int>>::iterator it2 = it->first->getCrossedGaps()->begin(); it2 != it->first->getCrossedGaps()->end(); it2++) {
 			if (it2->first == it->first) secondGapPosition = it2->second;
 		}
 		char letter = word[it->second];
-		it->first->updateDomain(letter, secondGapPosition);
+		it->first->updateDomain(letter, secondGapPosition, gap);
 	}
 }
 
 
-/*void CrosswordDeck::updateDomain(list<pair<CrosswordGap, int>> cross) {
-	
-	for (list<pair<CrosswordGap, int>>::iterator it = cross.begin(); it != cross.end(); it++) {
-		CrosswordGap crossedGap = (*it).first;
-
-		if (crossedGap.getWord() != " ") {
-			list<pair<CrosswordGap, int>> crossList = crossedGap.getCrossedGaps();
-
-			string crossedWord = crossedGap.getWord();
-
-			int index = (*it).second;
-
+void CrosswordDeck::restoreDomains(CrosswordGap* gap) {
+	for (list<pair<CrosswordGap*, int>>::iterator it = gap->getCrossedGaps()->begin(); it != gap->getCrossedGaps()->end(); it++) {
+		for (list<pair<pair<string, bool>, CrosswordGap*>>::iterator domainIt = it->first->getWholeDomain()->begin(); domainIt != it->first->getWholeDomain()->end(); domainIt++) {
+			if (domainIt->second != NULL && domainIt->second == gap) {
+				domainIt->second = NULL;
+				domainIt->first.second = true;
+			}
 		}
 	}
-}*/
+}
 
+
+bool myfunction(CrosswordGap* i, CrosswordGap* j) { return (i->getCrossedGaps() < j->getCrossedGaps()); }
+
+void CrosswordDeck::orderGapsByCrossingGaps() {
+	std::sort(this->gaps.begin(), this->gaps.end(), myfunction);
+}

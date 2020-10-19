@@ -8,7 +8,8 @@ CrosswordGap::CrosswordGap(list<CrosswordDeckCell*> cells, Direction direction, 
 	this->direction = direction;
 
 	for (vector<string>::iterator it = domainWords.begin(); it != domainWords.end(); it++) {
-		this->domain.push_back(pair<string, bool>(*it, true));
+		pair<string, bool> aux(*it, true);
+		this->domain.push_back(pair<pair<string, bool>, CrosswordGap*>(aux, NULL));
 	}
 }
 
@@ -27,6 +28,11 @@ bool CrosswordGap::setWord(string word) {
 		(*it)->setLetter(word[idx]);
 		idx++;
 	}
+
+	for (list<pair<pair<string, bool>, CrosswordGap*>>::iterator it = this->domain.begin(); it != this->domain.end(); it++) {
+		if (it->first.first == word) it->first.second = false;
+	}
+
 	return true;
 }
 
@@ -39,21 +45,31 @@ string CrosswordGap::getWord() {
 }
 
 void CrosswordGap::removeWord() {
+
+	string word = this->getWord();
+
 	for (list<CrosswordDeckCell*>::iterator it = this->cells.begin(); it != this->cells.end(); it++) {
 		(*it)->removeLetter();
+	}
+
+	for (list<pair<pair<string, bool>, CrosswordGap*>>::iterator it = this->domain.begin(); it != this->domain.end(); it++) {
+		if (it->first.first == word) it->first.second = true;
 	}
 }
 
 vector<string> CrosswordGap::getAvailableDomain() {
 	vector<string> availableWords;
-	for (list<pair<string, bool>>::iterator it = this->domain.begin(); it != this->domain.end(); it++) {
-		if ((*it).second == true) availableWords.push_back((*it).first);
+	for (list<pair<pair<string, bool>, CrosswordGap*>>::iterator it = this->domain.begin(); it != this->domain.end(); it++) {
+		if (it->first.second == true) availableWords.push_back(it->first.first);
 	}
 	return availableWords;
 }
 
-void CrosswordGap::updateDomain(char letter, int position) {
-	for (list<pair<string, bool>>::iterator it = this->domain.begin(); it != domain.end(); it++) {
-		if (it->first[position] != letter) it->second = false;
+void CrosswordGap::updateDomain(char letter, int position, CrosswordGap* responsibleGap) {
+	for (list<pair<pair<string, bool>, CrosswordGap*>>::iterator it = this->domain.begin(); it != domain.end(); it++) {
+		if (it->first.first[position] != letter) {
+			it->first.second = false;
+			it->second = responsibleGap;
+		}
 	}
 }

@@ -12,6 +12,7 @@ private:
 public:
 	CrosswordSolver(CrosswordDeck* deck, CrosswordDictionary* dictionary);
 	bool solveCrossword_Backtracking();
-	bool solveCrossword_Backtracking_WithForwardCheking();
+	bool solveCrossword_Backtracking_WithForwardChecking();
+	bool remainingGapsStillHaveDomain();
 };
 
